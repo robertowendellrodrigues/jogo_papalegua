@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+       
+    #tela {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(175, 179, 131);
+        width: 900px;
+        height: 650px;
+        overflow: hidden;
+    }
+    .back, #imgBack{
+        position: absolute;
+        width: 900px;
+        height: 630px;
+    }
+    #cacto {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        margin-left: -180px;
+        margin-top: 430px;     
+    }
+    #papalegua {
+        position: relative;
+        width: 150px;
+        height: 80px;
+        margin-top: 400px;        
+    }
+    #imgPapaleguaParado{
+        position: absolute;
+        width: 100px;
+        height: 60px;       
+    }
+    .animacaocacto{
+        animation: cacto 1.8s infinite;
+    }
+    .animacaocacto2{
+        animation: cacto 1.5s infinite;
+    }
+    .animacaocacto3{
+        animation: cacto 1s infinite;
+    }
+    .animacaoNuvens{
+        animation: nuvens 3.5s infinite;
+    }
+    .animacao {        
+        animation: papaleguaParado 500ms infinite;
+    }
+    #nuvem1 {
+        position: absolute;
+        width: 900px;
+        height: 50px;
+        margin-top: 20px;
+        margin-left: -220px;             
+    }
+    @keyframes papaleguaParado {
+        0% {bottom: 0px;}
+        30%{bottom: 50px;}       
+        70%{bottom: 50px}
+        100% {bottom: 50px;
+        }
+    }
+    @keyframes cacto {
+        0% {left: 950px;}
+
+        100% {left: -250px;}
+    }
+    @keyframes nuvens {
+        0% {left: 900px;}
+
+        100% {left: -280px;}
+    } 
+    #imgPapalegua{
+        width: 150px;
+        height: 80px;
+    }
+    #imgCacto{
+        width: 50px;
+        height: 50px;
+    }    
+    .nuvens{
+        width: 300px;
+        height: 120px;
+    }
+    p{
+        position: absolute;
+        margin-top: 220px;
+        margin-left: 290px;
+        font-size: 60px;
+        color: red;
+        visibility: hidden;
+    }
+
+</style>
+
+<body onclick="pular()">
+    <div id="tela">
+        <div class="back">            
+            <img src="img/game-background.jpg" alt="" id="imgBack">
+            <div><p>Game Over</p></div>
+        </div>
+
+        <div class="nuvens" id="nuvem1">
+            <img src="img/nuvem.png" alt="" class="nuvens" id="">
+        </div>        
+        
+        <div id="papalegua">
+            <img src="img/Road Runner 7.gif" alt="" id="imgPapalegua" >           
+        </div>
+
+        <div id="cacto">
+            <img src="img/teste2.png" alt="" id="imgCacto" >
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let papalegua = document.querySelector("#papalegua")
+    let cacto = document.querySelector("#cacto")
+    let nuvens = document.querySelector("#nuvem1")
+    let imgPapalegua = document.querySelector("#imgPapalegua")    
+    let onOff = false
+    let timer
+    let velocidade = 1  
+
+    function pular(){
+        onOff = true
+        imgPapalegua.setAttribute('src', 'img/Road Runner 9.gif')
+        timer = setInterval(acelerarJogo, 5000)
+        
+        if(onOff == true){
+            cacto.classList.add("animacaocacto")
+            nuvens.classList.add("animacaoNuvens")
+
+            if (papalegua.classList != "animacao"){
+            papalegua.classList.add('animacao')
+        }
+        setTimeout(function(){
+            papalegua.classList.remove('animacao')
+        }, 500)
+        }
+    }
+
+    function acelerarJogo(){
+        if(velocidade == 3){
+            console.log(velocidade)
+        cacto.classList.add("animacaocacto3")
+        nuvens.classList.add("animacaocacto3")
+        }
+        if(velocidade == 2){
+            console.log(velocidade)
+        cacto.classList.add("animacaocacto2")
+        nuvens.classList.add("animacaocacto2")
+        velocidade += 1
+        }       
+
+        if(velocidade == 1){
+        console.log(velocidade)
+        cacto.classList.add("animacaocacto")
+        nuvens.classList.add("animacaocacto")
+        velocidade += 1
+        
+        }
+      
+     
+    }
+
+    function verificaGameUver(){
+
+    }
+    
+</script>
